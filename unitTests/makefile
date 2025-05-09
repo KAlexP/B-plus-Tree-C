@@ -20,9 +20,19 @@ $(TARGET): $(SRC)
 run: $(TARGET)
 	./$(TARGET)
 
-# Clean build artifacts
+# === Debug Build and Run ===
+debug: CFLAGS += -g -O0 -DDEBUG -fsanitize=address -fno-omit-fram-pointer
+debug: LDFLAGS += -fsanitize=address
+debug: $(TARGET)
+	ASAN_OPTIONS=detect=1 ./$(TARGET)
+
+# ===== Release Build =====
+release: CFLAGS += -O2 
+release: clean $(TARGET)
+
+# Cleanup
 clean:
 	rm -f $(TARGET) CUnitAutomated-*.xml
 
-.PHONY: all run clean
+.PHONY: all run clean debug
 
