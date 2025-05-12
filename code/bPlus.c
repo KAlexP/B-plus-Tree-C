@@ -1,5 +1,28 @@
 #include "bPlus.h"
 
+
+
+/*******************************************************************************
+* Function Title: create_leaf_node
+* Summary: This function creates a leaf node
+*
+* Inputs:
+* 	char: this is just a small number that says if the node is a leaf or not
+* Outputs:
+* 	node *: a pointer to the newly created node
+********************************************************************************
+* Pseudocode
+*   Begin
+*			allocate memory 
+*			set leaf to value passed in is_leaf
+*			set num_keys to zero
+*			set next to NULL 
+*			loop through pointer with i
+*				set pointer[i] to NULL
+*			endloop 
+*			return NewNode
+*   End
+*******************************************************************************/
 node* create_leaf_node(char is_leaf){
 	node* NewNode = (node*)malloc(sizeof(node));
   NewNode->is_leaf = is_leaf;
@@ -9,6 +32,23 @@ node* create_leaf_node(char is_leaf){
   return NewNode;
 }
 
+
+/*******************************************************************************
+* Function Title: insert
+* Summary: This function inserts a newly created node into the B+ tree.
+*
+* Inputs:
+* 	bPlusTree *tree: the 'root' of the tree
+* 	char key: the key for the data being stored
+* 	void* data: the data being stored
+* Outputs:
+* 	node*: the new root if it had to change
+********************************************************************************
+* Pseudocode
+*   Begin
+*
+*   End
+*******************************************************************************/
 node* insert(bPlusTree* tree, char key, void* data){
 	if(!tree->root){
 		tree->root = create_leaf_node(0);
