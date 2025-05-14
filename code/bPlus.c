@@ -46,7 +46,11 @@ node* create_leaf_node(char is_leaf){
 ********************************************************************************
 * Pseudocode
 *   Begin
-*
+*			if tree is empty
+*				return new node as root
+*			if new node is lower order 
+*				set leaf keys 
+*			
 *   End
 *******************************************************************************/
 node* insert(bPlusTree* tree, char key, void* data){
